@@ -1,0 +1,17 @@
+{
+  "name": "metablock-action",
+  "version": "1.0.0",
+  "description": "Metablock github action",
+  "main": "src/index.ts",
+  "repository": "git@github.com:quantmind/metablock-action.git",
+  "author": "Luca Sbardella <luca@quantmind.com>",
+  "license": "BSD",
+  "private": true,
+  "dependencies": {
+    "@metablock/cli": "^0.1.5"
+  },
+  "devDependencies": {
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  }
+}

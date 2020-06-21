@@ -1,0 +1,15 @@
+name: 'Metablock Action'
+description: 'This action make a deployment to Metablock cloud'
+inputs:
+  metablock-token:
+    description: 'Metablock API Token'
+    required: true
+
+outputs:
+  preview-url:
+    description: 'deployment preview URL'
+  preview-name:
+    description: 'deployment preview name'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
