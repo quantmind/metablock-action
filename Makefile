@@ -9,8 +9,8 @@ help:
 image:		## Build image
 	@docker build -t metablock-action .
 
-run:		## Build image
-	@docker run metablock-action
+terminal:	## Terminal
+	@docker run -it --rm metablock-action bash
 
 
 update:		## Update dependencies

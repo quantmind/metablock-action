@@ -11,6 +11,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      METABLOCK_API_TOKEN: ${{ secrets.METABLOCK_API_TOKEN }}
+      METABLOCK_BLOCK_ID: 7ccced109e374e0ebdcb4d8bb9b8d61e
+      BUNDLE_LOCATION: example/public
 
     steps:
       - name: checkout repo
@@ -24,15 +28,8 @@ jobs:
       - uses: quantmind/metablock-action@master
         id: metablock-deployment-stage
         if: github.event_name == 'pull_request'
-        with:
-          metablock-block-id: 7ccced109e374e0ebdcb4d8bb9b8d61e
-          metablock-api-token: ${{ secrets.METABLOCK_API_TOKEN }}
-          bundle-location: example/public
       - uses: quantmind/metablock-action@master
         id: metablock-deployment-prod
         if: github.event_name == 'push'
         with:
-          metablock-block-id: 7ccced109e374e0ebdcb4d8bb9b8d61e
-          metablock-api-token: ${{ secrets.METABLOCK_API_TOKEN }}
-          metablock-env: prod
-          bundle-location: example/public
+          env: prod
