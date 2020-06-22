@@ -12,4 +12,4 @@ Deploy a new version of a block to metablock cloud.
 - **env**: environment where to deploy, either `stage` or `prod`, (it defaults to `stage` if not provided)
 
 
-Check the [test.yml](./.github/workflow/test.yml) manifest file for an example where pull requests to master are deployed to `stage` and a merge to `master` to `prod`.
+Check the [test.yml](./.github/workflows/test.yml) manifest file for an example where pull requests to master are deployed to `stage` and a merge to `master` to `prod`.
