@@ -21,14 +21,14 @@ jobs:
           node-version: 12.x
       - name: build example
         run: cd example && yarn && yarn build
-      - uses: ./
-        id: metablock-deployment-staging
+      - uses: quantmind/metablock-action@master
+        id: metablock-deployment-stage
         if: github.event_name == 'pull_request'
         with:
           metablock-block-id: 7ccced109e374e0ebdcb4d8bb9b8d61e
           metablock-api-token: ${{ secrets.METABLOCK_API_TOKEN }}
           bundle-location: example/public
-      - uses: ./
+      - uses: quantmind/metablock-action@master
         id: metablock-deployment-prod
         if: github.event_name == 'push'
         with:
