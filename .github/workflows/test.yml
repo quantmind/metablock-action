@@ -32,4 +32,4 @@ jobs:
         id: metablock-deployment-prod
         if: github.event_name == 'push'
         with:
-          args: ["--env", "prod"]
+          env: prod
