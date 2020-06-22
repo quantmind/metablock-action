@@ -13,6 +13,7 @@ runs:
   image: "Dockerfile"
   args:
     - metablock
+    - ship
     - "--token"
     - ${{ inputs.token }}
     - "--block"
