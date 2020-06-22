@@ -2,8 +2,7 @@
 # javascript
 node_modules
 bin
-build
-static
+dist
 package-lock.json
 
 # directories

@@ -7,7 +7,12 @@
   "author": "Luca Sbardella <luca@quantmind.com>",
   "license": "BSD",
   "private": true,
+  "scripts": {
+    "build": "export NODE_ENV=production && tsc"
+  },
   "dependencies": {
+    "@actions/core": "^1.2.4",
+    "@actions/github": "^3.0.0",
     "@metablock/cli": "^0.1.5"
   },
   "devDependencies": {
