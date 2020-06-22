@@ -1,8 +1,3 @@
-import core from "@actions/core";
-import github from "@actions/github";
+import deploy from "./deploy";
 
-const deploy = () => {
-  const { context } = github;
-  const metablockToken = core.getInput("metablock-token", { required: true });
-  const metablockId = core.getInput("metablock-block-id");
-};
+deploy();

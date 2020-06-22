@@ -23,3 +23,5 @@ RUN yarn build
 FROM base AS release
 COPY --from=dependencies /action/prod_node_modules ./node_modules
 COPY --from=build /action/dist ./dist
+
+CMD node ./dist/index.js

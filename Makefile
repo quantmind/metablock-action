@@ -9,6 +9,9 @@ help:
 image:		## Build image
 	@docker build -t metablock-action .
 
+run:		## Build image
+	@docker run metablock-action
+
 
 update:		## Update dependencies
 	@yarn upgrade --latest

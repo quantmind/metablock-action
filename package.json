@@ -5,10 +5,11 @@
   "main": "src/index.ts",
   "repository": "git@github.com:quantmind/metablock-action.git",
   "author": "Luca Sbardella <luca@quantmind.com>",
-  "license": "BSD",
+  "license": "ISC",
   "private": true,
   "scripts": {
-    "build": "export NODE_ENV=production && tsc"
+    "build": "export NODE_ENV=production && tsc",
+    "action": "node ./dist/index.js"
   },
   "dependencies": {
     "@actions/core": "^1.2.4",
