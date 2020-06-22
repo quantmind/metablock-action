@@ -1,15 +1,22 @@
-name: 'Metablock Action'
-description: 'This action make a deployment to Metablock cloud'
+name: "Metablock Action"
+description: "This action make a deployment to Metablock cloud"
 inputs:
-  metablock-token:
-    description: 'Metablock API Token'
+  metablock-block-id:
+    description: "Metablock Block ID"
     required: true
+  metablock-api-token:
+    description: "Metablock API Token"
+    required: true
+  metablock-env:
+    description: "Metablock environment for deployment (stage or prod, default is stage)"
+  bundle-location:
+    description: "Directory containing the bundle to deploy"
 
 outputs:
   preview-url:
-    description: 'deployment preview URL'
+    description: "deployment preview URL"
   preview-name:
-    description: 'deployment preview name'
+    description: "deployment preview name"
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: "node12"
+  main: "dist/index.js"
