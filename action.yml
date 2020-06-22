@@ -1,0 +1,21 @@
+name: "Metablock Action"
+description: "Make a new deployment into metablock cloud"
+inputs:
+  token:
+    description: "Metablock API token - can be set as METABLOCK_API_TOKEN env variable"
+  block:
+    description: "Metablock Block ID - can be set as METABLOCK_BLOCK_ID env variable"
+  env:
+    description: "Metablock environment to deploy"
+    default: "stage"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - metablock
+    - "--token"
+    - ${{ inputs.token }}
+    - "--block"
+    - ${{ inputs.block }}
+    - "--env"
+    - ${{ inputs.env }}
