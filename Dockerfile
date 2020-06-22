@@ -2,7 +2,7 @@ FROM node:12-slim AS base
 
 WORKDIR /action
 
-COPY . .
+COPY package.json package.json
 
 # ---- Production dependencies ----
 FROM base AS dependencies
@@ -14,6 +14,7 @@ RUN cp -R node_modules prod_node_modules
 # ---- Build & Test ----
 FROM base AS build
 ENV DOCKER=yes
+COPY . .
 COPY --from=dependencies /action/yarn.lock .
 RUN yarn
 RUN yarn build
@@ -23,5 +24,6 @@ RUN yarn build
 FROM base AS release
 COPY --from=dependencies /action/prod_node_modules ./node_modules
 COPY --from=build /action/dist ./dist
+COPY entrypoint.sh /entrypoint.sh
 
-CMD node /action/dist/index.js
+ENTRYPOINT ["/entrypoint.sh"]
