@@ -1,6 +1,7 @@
 # Metablock Action
 
 [![build](https://github.com/quantmind/metablock-action/workflows/build/badge.svg)](https://github.com/quantmind/metablock-action/actions?query=workflow%3Abuild)
+[![test](https://github.com/quantmind/metablock-action/workflows/test/badge.svg)](https://github.com/quantmind/metablock-action/actions?query=workflow%3Atest)
 
 Deploy a new version of a block to metablock cloud.
 
