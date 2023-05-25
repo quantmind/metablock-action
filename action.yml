@@ -5,6 +5,9 @@ inputs:
     description: "Metablock API token - can be set as METABLOCK_API_TOKEN env variable"
   block:
     description: "Metablock Block ID - can be set as METABLOCK_BLOCK_ID env variable"
+  bundle:
+    description: "Filesystem location of the bundle to deploy"
+    default: "./dist"
   env:
     description: "Metablock environment to deploy"
     default: "stage"
@@ -18,5 +21,7 @@ runs:
     - ${{ inputs.token }}
     - "--block"
     - ${{ inputs.block }}
+    - "--bundle"
+    - ${{ inputs.bundle }}
     - "--env"
     - ${{ inputs.env }}

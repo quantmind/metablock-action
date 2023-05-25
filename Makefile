@@ -13,5 +13,8 @@ terminal:	## Terminal
 	@docker run -it --rm metablock-action bash
 
 
+outdated:		## Outdated dependencies
+	@cd example && yarn outdated
+
 update:		## Update dependencies
-	@yarn upgrade --latest
+	@cd example && yarn upgrade --latest
