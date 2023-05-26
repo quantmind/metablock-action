@@ -1,35 +1,31 @@
 name: test
 
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+on: push
 
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
       METABLOCK_API_TOKEN: ${{ secrets.METABLOCK_API_TOKEN }}
-      METABLOCK_BLOCK_ID: 7ccced109e374e0ebdcb4d8bb9b8d61e
-      BUNDLE_LOCATION: example/public
+      METABLOCK_BLOCK_ID: 9f15b0a7a60e4f528e573444cc5af7e0
+      BUNDLE_LOCATION: example/dist
 
     steps:
       - name: checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: build example
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
-          node-version: 12.x
+          node-version: 18.x
       - name: build example
-        run: cd example && yarn && yarn build
-      - uses: quantmind/metablock-action@master
-        id: metablock-deployment-stage
-        if: github.event_name == 'pull_request'
-      - uses: quantmind/metablock-action@master
-        id: metablock-deployment-prod
-        if: github.event_name == 'push'
+        run: make build-example
+      - name: stage deployment
+        uses: ./
+        if: github.ref != 'refs/heads/main'
+        with:
+          env: stage
+      - name: prod deployment
+        uses: ./
+        if: github.ref == 'refs/heads/main'
         with:
           env: prod
