@@ -11,11 +11,11 @@ jobs:
 
     steps:
       - name: checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: build example
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: 22.x
       - name: build example
         run: make build-example
       - name: stage deployment
