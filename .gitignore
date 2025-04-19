@@ -1,17 +1,4 @@
 #
-# javascript
-node_modules
-bin
-dist
-package-lock.json
-
-# directories
-coverage
-dist
-example/public
-.tmp
-
-#
 # files
 .DS_Store
 *.log

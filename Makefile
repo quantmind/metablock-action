@@ -18,12 +18,4 @@ terminal:		## Terminal
 
 .PHONY: build-example
 build-example:		## Build example
-	@cd example && yarn && yarn build
-
-.PHONY: outdated-example
-outdated-example:	## Outdated example dependencies
-	@cd example && yarn outdated
-
-.PHONY: update-example
-update-example:		## Update example dependencies
-	@cd example && yarn upgrade --latest
+	@cd example && npm i && npm run build
