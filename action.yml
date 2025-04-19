@@ -2,14 +2,14 @@ name: "Metablock Action"
 description: "Make a new deployment into metablock cloud"
 inputs:
   token:
-    description: "Metablock API token - can be set as METABLOCK_API_TOKEN env variable"
+    description: "Metablock API token - can be set via the METABLOCK_API_TOKEN env variable"
   block:
-    description: "Metablock Block ID - can be set as METABLOCK_BLOCK_ID env variable"
+    description: "Metablock Block ID - can be set via the METABLOCK_BLOCK_ID env variable"
   bundle:
     description: "Filesystem location of the bundle to deploy"
     default: "./dist"
   env:
-    description: "Metablock environment to deploy"
+    description: "Metablock environment - can be set via the METABLOCK_ENV env variable"
     default: "stage"
 runs:
   using: "docker"
@@ -17,11 +17,10 @@ runs:
   args:
     - metablock
     - ship
+    - ${{ inputs.bundle }}
     - "--token"
     - ${{ inputs.token }}
-    - "--block"
+    - "--block-id"
     - ${{ inputs.block }}
-    - "--bundle"
-    - ${{ inputs.bundle }}
     - "--env"
     - ${{ inputs.env }}
