@@ -21,6 +21,6 @@ runs:
     - "--token"
     - ${{ inputs.token }}
     - "--block-id"
-    - ${{ inputs.block }}
+    - ${{ inputs.block || env.METABLOCK_BLOCK_ID }}
     - "--env"
     - ${{ inputs.env }}
