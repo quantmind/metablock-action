@@ -9,5 +9,33 @@ jobs:
 
     steps:
       - name: checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - run: make image
+
+  test:
+    runs-on: ubuntu-latest
+    env:
+      METABLOCK_API_TOKEN: ${{ secrets.METABLOCK_API_TOKEN }}
+      METABLOCK_BLOCK_ID: 85ef26bff9f0454aa6ff0516b6d52420
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: build example
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: build example
+        run: make build-example
+      - name: stage deployment
+        uses: ./
+        if: github.ref != 'refs/heads/main'
+        with:
+          env: stage
+          bundle: example/dist
+      - name: prod deployment
+        uses: ./
+        if: github.ref == 'refs/heads/main'
+        with:
+          env: prod
+          bundle: example/dist

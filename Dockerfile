@@ -1,6 +1,5 @@
-FROM node:18-slim
+FROM python:3.13-slim
 
 WORKDIR /action
 
-ENV DOCKER=yes NODE_ENV=production
-RUN npm i --global @metablock/cli@0.23.2
+RUN pip install metablock
