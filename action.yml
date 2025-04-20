@@ -11,6 +11,8 @@ inputs:
   env:
     description: "Metablock environment - can be set via the METABLOCK_ENV env variable"
     default: "stage"
+  name:
+    description: "Optional deployment name - can be set via the METABLOCK_NAME env variable"
 runs:
   using: "docker"
   image: "Dockerfile"
@@ -24,3 +26,5 @@ runs:
     - ${{ inputs.block }}
     - "--env"
     - ${{ inputs.env }}
+    - "--name"
+    - ${{ inputs.name }}
