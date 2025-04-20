@@ -1,0 +1,32 @@
+name: test
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      METABLOCK_API_TOKEN: ${{ secrets.METABLOCK_API_TOKEN }}
+      METABLOCK_BLOCK_ID: 9f15b0a7a60e4f528e573444cc5af7e0
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: build example
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+      - name: build example
+        run: make build-example
+      - name: stage deployment
+        uses: ./
+        if: github.ref != 'refs/heads/main'
+        with:
+          env: stage
+          bundle: example/dist
+      - name: prod deployment
+        uses: ./
+        if: github.ref == 'refs/heads/main'
+        with:
+          env: prod
+          bundle: example/dist
