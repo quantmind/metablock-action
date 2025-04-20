@@ -13,7 +13,9 @@ image:			## Build image
 
 .PHONY: terminal
 terminal:		## Terminal
-	@docker run -it --rm metablock-action bash
+	@docker run -it --rm \
+		-v $(PWD):/action \
+		metablock-action bash
 
 
 .PHONY: build-example
